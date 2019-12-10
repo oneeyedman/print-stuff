@@ -1,0 +1,28 @@
+@media print {
+  @page {
+
+  }
+  body {
+    
+  }
+  a {
+    color: currentColor;
+    text-decoration: underline;
+  }
+  a:after {
+    content:" (" attr(href) ") ";
+    font-weight: bold;
+    margin-left: .25em;
+    text-decoration: none;
+  }
+  .block {
+    page-break-before: always;
+  }
+  .block__section {
+    page-break-inside: avoid;
+  }
+  .is-folded .block__section {
+    display: block;
+  }
+  
+}
