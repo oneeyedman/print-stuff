@@ -174,3 +174,37 @@ body {
   margin-top: 10px;
   padding: 45px 0;
 }
+
+
+
+
+
+/* PRINT2PDF */
+.print__actions {
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.print__action {}
+.print__btn {
+  font: inherit;
+}
+.print__btn-capture {}
+
+
+
+
+
+
+/* RENDER */
+.render {
+  margin-top: 2px;
+  border-top: 2px solid red;
+  padding: 2px;
+}
+.render canvas {
+  transform: scale(.8);
+}

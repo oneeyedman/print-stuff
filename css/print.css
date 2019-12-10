@@ -24,5 +24,7 @@
   .is-folded .block__section {
     display: block;
   }
-  
+  .print__actions {
+    display: none;
+  }
 }

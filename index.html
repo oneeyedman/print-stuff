@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="css/print.css">
 </head>
 <body>
-  <div class="page">
+  
+  <div id="page" class="page">
     <header class="header">
       <div class="wrapper">
         <h1 class="header__title">Prueba de impresión</h1>
@@ -233,5 +234,26 @@
       </div>
     </footer>
   </div>
+
+  <ul class="print__actions">
+    <li class="print__action">
+      <button class="print__btn print__btn-capture">Captura el documento</button>
+    </li>
+  </ul>
+  <div class="render">
+
+  </div>
+  <script src="js/html2canvas.min.js"></script>
+  <script>
+    const captureBtn = document.querySelector('.print__btn-capture');
+
+    captureBtn.addEventListener('click', function(){
+      html2canvas(document.querySelector("#page"))
+        .then(canvas => {
+          document.querySelector('.render').appendChild(canvas)
+        });
+    });
+
+  </script>
 </body>
 </html>
