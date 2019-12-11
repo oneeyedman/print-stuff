@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/print.css">
 </head>
-<body>
+<body id="top">
   
   <div id="page" class="page">
     <header class="header">
@@ -253,14 +253,16 @@
       const newCanvas = document.querySelector('.render canvas');
       newCanvas.removeAttribute('style');
       const imgData = newCanvas.toDataURL("image/jpeg", 1.0);
-      const pdf = new jsPDF('p','pt',[794, 3576]);
+      const pdf = new jsPDF('p','pt',[794.25, 2554]);
 
-      pdf.addImage(imgData, 'JPEG', 0, 0, 794, 3576);
+      pdf.addImage(imgData, 'PNG', 0, 0, 794.25, 2554);
       pdf.save("download.pdf");
     }
 
     captureBtn.addEventListener('click', function(){
-      page.style.width = "794pt";
+      page.style.width = "794.25pt";
+      location.href="#top";
+
       html2canvas(page)
         .then(canvas => {
           const container = document.querySelector('.render');
