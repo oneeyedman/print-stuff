@@ -246,24 +246,29 @@
   <script src="js/jspdf.min.js"></script>
   <script src="js/html2canvas.min.js"></script>
   <script>
+    const page = document.querySelector("#page");
     const captureBtn = document.querySelector('.print__btn-capture');
 
     function saveCanvas() {
       const newCanvas = document.querySelector('.render canvas');
       newCanvas.removeAttribute('style');
       const imgData = newCanvas.toDataURL("image/jpeg", 1.0);
-      const pdf = new jsPDF();
+      const pdf = new jsPDF('p','pt',[794, 3576]);
 
-      pdf.addImage(imgData, 'JPEG', 0, 0);
+      pdf.addImage(imgData, 'JPEG', 0, 0, 794, 3576);
       pdf.save("download.pdf");
     }
 
     captureBtn.addEventListener('click', function(){
-      html2canvas(document.querySelector("#page"))
+      page.style.width = "794pt";
+      html2canvas(page)
         .then(canvas => {
-          document.querySelector('.render').appendChild(canvas);
+          const container = document.querySelector('.render');
+          container.innerHTML = '';
+          container.appendChild(canvas);
 
           saveCanvas(); //36,05
+          page.removeAttribute('style');
         });
     });
 
