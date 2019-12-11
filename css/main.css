@@ -202,9 +202,6 @@ body {
 /* RENDER */
 .render {
   margin-top: 2px;
-  border-top: 2px solid red;
   padding: 2px;
-}
-.render canvas {
-  transform: scale(.8);
+  background: #ff9900;
 }
