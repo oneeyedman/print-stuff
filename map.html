@@ -11,9 +11,7 @@
     }
     body {
       height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      
     }
     .map {
       border: 1px solid red;
@@ -150,6 +148,7 @@
  </circle>
 </svg>
 </div>
+<canvas id="svgToPng"></canvas>
 <img id="img" src="">
 <script>
   const spain = [
@@ -171,10 +170,23 @@ function paintArea(item) {
 function map2Image() {
   const svg = document.querySelector('#map');
   const img = document.querySelector('#img');
+  const svg2png = document.querySelector('#svgToPng');
+  svg2png.width = 642;
+  svg2png.height = 572;
+  const ctx = svg2png.getContext('2d');
 
   var s = new XMLSerializer().serializeToString(svg);
   var encodedData = window.btoa(s);
-  img.setAttribute("src", "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(s))))
+  img.setAttribute("src", "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(s))));
+  img.onload = function() {
+    ctx.drawImage(img, 0, 0, 642, 572);
+    const imgData = svg2png.toDataURL("image/png", 1.0);
+    console.log(imgData);
+    img.src = imgData;
+  }
+
+
+
 }
 
 function applyColors(data) {
